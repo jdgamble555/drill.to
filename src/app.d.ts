@@ -1,9 +1,13 @@
 // src/app.d.ts
 
 import { SupabaseClient, Session } from '@supabase/supabase-js'
-import { Database } from './DatabaseDefinitions'
+import type { Database as DB } from './lib/database.types';
 
 declare global {
+	type Optional<T> = T | null | undefined;
+	type UserType = Session['user'];
+	type Database = DB;
+	type AuthorType = DB['public']['Tables']['profiles']['Row'];
 	namespace App {
 		interface Locals {
 			supabase: SupabaseClient<Database>
@@ -14,5 +18,11 @@ declare global {
 		}
 		// interface Error {}
 		// interface Platform {}
+	}
+
+	declare namespace svelteHTML {
+		interface HTMLAttributes<T> {
+			'on:clickOutside'?: CompositionEventHandler<T>;
+		}
 	}
 }
