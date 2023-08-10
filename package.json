@@ -12,7 +12,11 @@
 		"lint": "prettier --plugin-search-dir . --check . && eslint .",
 		"format": "prettier --plugin-search-dir . --write .",
 		"test:integration": "playwright test",
-		"test:unit": "vitest"
+		"test:unit": "vitest",
+		"sb-types": "npx env-cmd -f .env.development npx supabase gen types typescript --local > ./src/lib/database.types.ts",
+		"sb-stop": "npx env-cmd -f .env.development npx supabase stop",
+		"sb-start": "npx env-cmd -f .env.development npx supabase start & npm run sb-types",
+		"sb-reset": "npx env-cmd -f .env.development npx supabase db reset & npm run sb-types"
 	},
 	"devDependencies": {
 		"@playwright/test": "^1.28.1",
@@ -21,12 +25,14 @@
 		"@typescript-eslint/eslint-plugin": "^5.45.0",
 		"@typescript-eslint/parser": "^5.45.0",
 		"autoprefixer": "^10.4.14",
+		"env-cmd": "^10.1.0",
 		"eslint": "^8.28.0",
 		"eslint-config-prettier": "^8.5.0",
 		"eslint-plugin-svelte": "^2.30.0",
 		"postcss": "^8.4.27",
 		"prettier": "^2.8.0",
 		"prettier-plugin-svelte": "^2.10.1",
+		"supabase": "^1.83.7",
 		"svelte": "^4.0.5",
 		"svelte-check": "^3.4.3",
 		"tailwindcss": "^3.3.3",
@@ -35,5 +41,9 @@
 		"vite": "^4.4.2",
 		"vitest": "^0.32.2"
 	},
-	"type": "module"
+	"type": "module",
+	"dependencies": {
+		"@supabase/auth-helpers-sveltekit": "^0.10.2",
+		"@supabase/supabase-js": "^2.32.0"
+	}
 }
