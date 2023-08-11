@@ -22,7 +22,7 @@
 							return _tabs;
 						});
 					}}
-					class="p-4 text-sky-600 dark:text-white rounded-t-lg w-full {$tabs.active === panel
+					class="p-4 text-red-500 dark:text-white rounded-t-lg w-full {$tabs.active === panel
 						? 'bg-gray-100 dark:bg-neutral-700 dark:border-neutral-500'
 						: ''}"
 				>

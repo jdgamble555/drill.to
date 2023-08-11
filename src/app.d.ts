@@ -5,6 +5,7 @@ import type { Database as DB } from './lib/database.types';
 
 declare global {
 	type Optional<T> = T | null | undefined;
+	type CourseType = DB['public']['Tables']['courses']['Row'];
 	type UserType = Session['user'];
 	type Database = DB;
 	type AuthorType = DB['public']['Tables']['profiles']['Row'];

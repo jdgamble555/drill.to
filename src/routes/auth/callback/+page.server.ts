@@ -16,6 +16,8 @@ export const load = (async ({ url, locals: { supabase } }) => {
         await supabase.auth.exchangeCodeForSession(code);
     }
 
+    console.log(returnPath)
+
     throw redirect(303, returnPath);
 
 }) satisfies PageServerLoad;

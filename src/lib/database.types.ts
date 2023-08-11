@@ -9,6 +9,49 @@ export type Json =
 export interface Database {
   public: {
     Tables: {
+      courses: {
+        Row: {
+          author: string
+          cover_photo: string | null
+          created_at: string
+          description: string
+          id: string
+          name: string
+          short_id: string
+          slug: string
+          updated_at: string
+        }
+        Insert: {
+          author?: string
+          cover_photo?: string | null
+          created_at?: string
+          description: string
+          id?: string
+          name: string
+          short_id?: string
+          slug?: string
+          updated_at?: string
+        }
+        Update: {
+          author?: string
+          cover_photo?: string | null
+          created_at?: string
+          description?: string
+          id?: string
+          name?: string
+          short_id?: string
+          slug?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "courses_author_fkey"
+            columns: ["author"]
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
       profiles: {
         Row: {
           created_at: string
@@ -51,7 +94,28 @@ export interface Database {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      generate_custom_base64: {
+        Args: Record<PropertyKey, never>
+        Returns: string
+      }
+      slugify: {
+        Args: {
+          value: string
+        }
+        Returns: string
+      }
+      unaccent: {
+        Args: {
+          "": string
+        }
+        Returns: string
+      }
+      unaccent_init: {
+        Args: {
+          "": unknown
+        }
+        Returns: unknown
+      }
     }
     Enums: {
       profiles_role: "USER" | "ADMIN" | "EDITOR"

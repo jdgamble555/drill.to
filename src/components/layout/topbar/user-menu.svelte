@@ -26,7 +26,7 @@
 		<MenuItem class={menuItemClasses}>Your Profile</MenuItem>
 		<MenuItem class={menuItemClasses} href="/settings">Settings</MenuItem>
 		<MenuItem class={menuItemClasses} href="/dashboard">Dashboard</MenuItem>
-		<MenuItem class={menuItemClasses} href="/new">New Post</MenuItem>
+		<MenuItem class={menuItemClasses} href="/course/new">New Course</MenuItem>
 		<hr class="h-px bg-neutral-200 border-0 dark:bg-neutral-400" />
 		<Logout />
 	</Menu>
