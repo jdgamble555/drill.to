@@ -1,9 +1,8 @@
 <script lang="ts">
+	import Course from '@components/course/course.svelte';
 	import type { PageData } from './$types';
 
 	export let data: PageData;
 </script>
 
-<pre>
-    {JSON.stringify(data.course, null, 2)}
-</pre>
+<Course course={data.course} />

@@ -5,14 +5,19 @@
 	import { enhance } from '$app/forms';
 	import type { SubmitFunction } from '@sveltejs/kit';
 
-	export let action: string | undefined = undefined;
-	export let useEnhance: SubmitFunction<T> = () => {};
+	export let useEnhance: SubmitFunction<T> | undefined = undefined;
 	export let value: Optional<Record<string, FormDataEntryValue>> = null;
 	export let { node, form, setValue } = useFormControl();
 
 	if (value) setValue(value);
 </script>
 
-<form method="POST" on:submit action={action} bind:this={$node} use:enhance={useEnhance} on:input>
-	<slot />
-</form>
+{#if useEnhance}
+	<form method="POST" on:input on:submit bind:this={$node} use:enhance={useEnhance}>
+		<slot />
+	</form>
+{:else}
+	<form method="POST" on:input on:submit bind:this={$node}>
+		<slot />
+	</form>
+{/if}
